@@ -52,7 +52,29 @@ function changed(node1, node2) {
 
 
 function setProp($target, name, value) {
-	$target.setAttribute(name, value);
+	if (isCustomProp(name)) {
+		return;
+	} else if (name === 'classname') {
+		$target.setAttribute('class', value);
+	} else if (typeof value === 'boolean') {
+		setBooleanProp($target, name, value)
+	} else {
+		$target.setAttribute(name, value);
+	}
+
+}
+
+function isCustomProp(name) {
+	return false;
+}
+
+function setBooleanProp($target, name, value) {
+	if (value) {
+		$target.setAttribute(name, value);
+		$target[name] = true;
+	} else {
+		$target[name] = false;
+	}
 }
 
 function setProps($target, props) {
