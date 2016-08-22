@@ -54,7 +54,7 @@ function changed(node1, node2) {
 function setProp($target, name, value) {
 	if (isCustomProp(name)) {
 		return;
-	} else if (name === 'classname') {
+	} else if (name === 'className') {
 		$target.setAttribute('class', value);
 	} else if (typeof value === 'boolean') {
 		setBooleanProp($target, name, value)
