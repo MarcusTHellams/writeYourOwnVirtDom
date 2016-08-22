@@ -14,6 +14,7 @@ function createElement(node) {
 	}
 
 	const $el = document.createElement(node.type);
+	setProps($el, node.props)
 	node.children
 		.map(createElement)
 		.forEach($el.appendChild.bind($el));
@@ -47,6 +48,17 @@ function changed(node1, node2) {
 	return typeof node1 !== typeof node2 ||
 		typeof node1 === 'string' && node1 !== node2 ||
 		node1.type !== node2.type;
+}
+
+
+function setProp($target, name, value) {
+	$target.setAttribute(name, value);
+}
+
+function setProps($target, props) {
+	Object.keys(props).forEach(name => {
+		setProp($target, name, props[name]);
+	});
 }
 
 /* beautify preserve:start */
