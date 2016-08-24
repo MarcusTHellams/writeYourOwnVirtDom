@@ -2,7 +2,8 @@ var gulp = require('gulp'),
 	babel = require('gulp-babel'),
 	rename = require('gulp-rename'),
 	webserver = require('gulp-webserver'),
-	plumber = require('gulp-plumber');
+	plumber = require('gulp-plumber'),
+	webpack = require('gulp-webpack');
 
 gulp.task('babel', function() {
 	return gulp.src('./public/app.jsx')
@@ -31,4 +32,24 @@ gulp.task('webserver', ['watch'], function() {
 
 gulp.task('watch', function() {
 	gulp.watch('./public/app.jsx', ['babel']);
+});
+
+gulp.task('webpack', function() {
+	return gulp.src('./entry.js')
+		.pipe(webpack({
+			// watch: true,
+			output: {
+				filename: 'pack.js'
+			},
+			module: {
+				loaders: [{
+					test: /\.js$/,
+					loader: 'babel',
+					query: {
+						presets: ['es2015']
+					}
+				}]
+			}
+		}))
+		.pipe(gulp.dest('./public'));
 });

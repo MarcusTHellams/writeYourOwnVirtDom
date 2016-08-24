@@ -9,12 +9,20 @@
   "author": "Marcus T. Hellams",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.13.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webpack": "^1.5.0",
+    "gulp-webserver": "^0.9.1",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "lodash": "^4.15.0"
   }
 }
